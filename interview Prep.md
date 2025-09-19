@@ -20,26 +20,18 @@ SYS.4 is about designing the system architecture, while SYS.5 focuses on integra
 ✅ Q4: What kind of work products are generated in SYS.4 and SYS.5?
 
 Answer:
-
 SYS.4:
-
 System Architecture Document
-
 Interface Control Documents (ICD)
-
 Requirement Allocation Matrix
-
 SYS.5:
-
 Integration Test Plans
-
 Integration Test Cases and Reports
-
 Integration Logs
 
 ✅ Q5: What tools or methods have you used to support SYS.4 or SYS.5 processes?
 
-Answer (example):
+Answer 
 I’ve used tools like IBM Rhapsody for system architecture modeling (SYS.4) and Vector CANoe or dSPACE HIL setups for system integration testing (SYS.5). For documentation and traceability, we used IBM DOORS and Polarion ALM.
 
 ✅ Q6: How do you ensure traceability in SYS.4?
@@ -50,20 +42,18 @@ Traceability is maintained by linking system requirements to architectural compo
 1. Knowledge on ASPICE
 
 ASPICE (Automotive SPICE) is a process assessment model to evaluate software development processes in automotive.
-
-Level	Name	Description
-0	Incomplete	Process not implemented
-1	Performed	Process achieves purpose
-2	Managed	Planned and monitored
-3	Defined	Standard process across projects
-4	Predictable	Measurable and controlled
-5	Optimizing	Continuous improvement
-
+Level  	Name   	Description
+0	  Incomplete	Process not implemented
+1	 Performed	  Process achieves purpose
+2	 Managed  	  Planned and monitored
+3	 Defined	     Standard process across projects
+4	 Predictable	Measurable and controlled
+5	 Optimizing	Continuous improvement
 Why it's important: It ensures process quality, traceability, compliance (with ISO 26262), and aligns with OEM standards.
 
 2. SYS.4 vs SYS.5
-Feature	SYS.4 – System Architectural Design	SYS.5 – System Integration and Testing
-Goal	Define system architecture & interfaces	Integrate components and test at system level
+Feature	SYS.4 – System Architectural Design	        SYS.5 – System Integration and Testing
+Goal	Define system architecture & interfaces	    Integrate components and test at system level
 Input	SYS.2 (System Requirements)	Architecture from SYS.4, components
 Output	Architecture Docs, ICDs	Integrated system, Test reports
 Performed by	System Architect	System Integrator, Test Engineer
@@ -75,29 +65,21 @@ Closed Loop	Outputs affect future inputs (feedback loop)	Vehicle dynamics model 
 6. Types of Faults
 
 In HIL testing, common fault types:
-
 Open Circuit (OC), Short to Ground (SCG), Short to Battery (SCB) ,Signal Deviation Timing Faults,Communication Errors (e.g., CAN Error Frames)
 
 7. Diagnostics, UDS, Channels in CAN Box
 
 UDS (ISO 14229): Unified Diagnostic Services
 
-0x10 – Diagnostic Session Control
+0x10 – Diagnostic Session Control 0x11 – ECU Reset 0x22 – Read Data By Identifier 0x2E – Write Data By Identifier 0x19 – Read DTC Information
 
-0x11 – ECU Reset
-
-0x22 – Read Data By Identifier
-
-0x2E – Write Data By Identifier
-
-0x19 – Read DTC Information
 8. CANoe, CANalyzer, CANape
 Tool	Purpose
 CANoe	Simulation + Test + Diagnostics (Restbus simulation, CAPL scripting)
 CANalyzer	Monitoring and analysis of CAN/LIN/Ethernet buses
 CANape	Calibration and measurement tool for ECUs (ASAP2/A2L, XCP/CCP)
-9. CAPL Scripting
 
+10. CAPL Scripting
 CAPL (Communication Access Programming Language) is used in CANoe for automation and simulation.
 
 Example:
@@ -107,15 +89,9 @@ on message 0x123 {
        output("Received Engine Start");
    }
 }
-
-
 Use cases:
 
-Simulate ECUs
-
-Automate tests
-
-Implement restbus simulation
+Simulate ECUs ,Automate tests ,Implement restbus simulation
 
 10. CAN vs LIN vs Ethernet
 Feature	CAN	LIN	Ethernet
@@ -123,11 +99,9 @@ Speed	Up to 1 Mbps (CAN FD: 5-8M)	Up to 20 Kbps	Up to 100 Mbps or more
 Use Case	Safety-critical ECUs	Body control modules	Infotainment, ADAS
 Master-Slave	No	Yes	No (Full-duplex)
 Protocol	Event-driven	Time-triggered	IP-based stack
-11. Testing Techniques
 
-Black Box Testing
-
-White Box Testing ,Boundary Value Analysis,Equivalence Partitioning,Stress Testing,Regression Testing,Restbus Simulation,Fault Injection Testing,Back-to-Back Testing
+12. Testing Techniques
+Black Box Testing, White Box Testing ,Boundary Value Analysis,Equivalence Partitioning,Stress Testing,Regression Testing,Restbus Simulation,Fault Injection Testing,Back-to-Back Testing
 
 12. Defect Lifecycle
 New → Assigned → In Progress → Resolved → Verified → Closed
@@ -139,7 +113,8 @@ Use tools like JIRA
 Type	Description
 Retesting	Re-executing test cases that failed earlier
 Confirmation Testing	Re-testing to confirm that fixes resolve the issue without side effects
-14. ASIL Levels, Functional Safety
+
+15. ASIL Levels, Functional Safety
 ASIL (Automotive Safety Integrity Level): Part of ISO 26262
 ASIL	Severity	Use Case Example
 A	Low	Interior lighting
