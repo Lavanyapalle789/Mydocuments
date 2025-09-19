@@ -47,76 +47,6 @@ I’ve used tools like IBM Rhapsody for system architecture modeling (SYS.4) and
 Answer:
 Traceability is maintained by linking system requirements to architectural components and interfaces. Tools like DOORS or Polarion help establish bidirectional traceability from requirements to design and test artifacts.
 
-✅ Q7: What challenges did you face during system integration (SYS.5), and how did you solve them?
-
-Answer:
-A common challenge is interface mismatch between software and hardware modules. We addressed it by early interface definition reviews in SYS.4 and mocking/stubbing during integration to isolate modules. We also maintained integration logs for troubleshooting.
-
-Summary Table: SYS.4 vs SYS.5
-Feature	SYS.4 – System Architectural Design	SYS.5 – System Integration & Testing
-Focus	Architecture & interface design	Integration & testing of components
-Output	Architecture document, ICD	Integrated system, test reports
-Key Activity	Decomposition, requirement allocation	Build & test integration
-Main Stakeholders	System architects, domain engineers	Test engineers, integrators
-Related Tools	DOORS, Rhapsody, Enterprise Architect	CANoe, HIL systems, TestStand
-
-How to verify detection accuracy (false positives / false negatives).
-
-Timing, thresholds, signal conditioning, debouncing, noise filtering.
-
-Test Frameworks / Tools in V&V
-
-Standard tools used for testing embedded / automotive software: e.g. CANoe, CANape, dSPACE, Hardware‑in‑the‑Loop (HIL), Software‑in‑the‑Loop (SIL), etc.
-
-Test automation frameworks, test benches, simulators.
-
-Test Case Design & Requirements Traceability
-
-How you design test cases for hit testing: functional & non‑functional aspects (sensitivity, latency, environmental factors).
-
-How requirements are allocated, how test cases are linked to requirements.
-
-Verification and Validation Phases
-
-SYS.4 / SYS.5 (as earlier you asked): architecture vs integration & testing.
-
-
-Metrics & Reporting
-
-What metrics are important: detection rate, error rate, test coverage, latency, robustness under noise, etc.
-
-Reporting, regression, traceability tools.
-
-Domain/Standard Knowledge
-
-If automotive: ISO 26262, how safety features must be validated.
-
-If medical devices: relevant standards (IEC, FDA etc).
-
-Embedded constraints (memory, real‑time).
-
-Possible Interview Questions + Sample Answers
-
-Here are a few sample questions and model answers, tailored to such a topic
-
-
-Q3: In Cyient, using a test studio / internal tool, what challenges do you anticipate in hit testing and integrating test results?
-
-Answer:
-
-Some challenges might be:
-
-Calibration and consistency of physical sensors / hardware across test benches.
-
-Simulating real‑world conditions and events in lab; ensuring repeatability.
-
-Ensuring that test suite integrates with traceability tools / V&V workflows.
-
-M
-
-
-
-
 1. Knowledge on ASPICE
 
 ASPICE (Automotive SPICE) is a process assessment model to evaluate software development processes in automotive.
@@ -137,42 +67,6 @@ Goal	Define system architecture & interfaces	Integrate components and test at sy
 Input	SYS.2 (System Requirements)	Architecture from SYS.4, components
 Output	Architecture Docs, ICDs	Integrated system, Test reports
 Performed by	System Architect	System Integrator, Test Engineer
-3. Knowledge on HIL System
-
-HIL (Hardware-in-the-Loop) simulates the vehicle ECU environment by feeding real signals to/from ECUs using simulation models and I/O interfaces.
-
-Components:
-
-Real ECU
-
-Simulation PC
-
-IO Board (e.g., dSPACE, NI)
-
-Signal conditioning units
-
-Rest Bus Simulation
-
-Fault Injection Unit
-
-Use Cases:
-
-Testing without actual vehicle
-
-Repeatable test scenarios
-
-High safety before real deployment
-
-4. Diagram of HIL Test Bench
- +----------------+      +----------------+      +----------------+
- | Simulation PC  |<---->| IO Hardware    |<---->| ECU Under Test |
- | (MATLAB/Simul.)|      | (dSPACE/NI)    |      | (e.g. BCM, ABS)|
- +----------------+      +----------------+      +----------------+
-        ^                        |
-        |                        v
-  +-------------+         +-------------+
-  | Fault Injs. |         | Signal Cond |
-  +-------------+         +-------------+
 
 5. Open Loop vs Closed Loop in HIL
 Type	Description	Example
@@ -182,17 +76,7 @@ Closed Loop	Outputs affect future inputs (feedback loop)	Vehicle dynamics model 
 
 In HIL testing, common fault types:
 
-Open Circuit (OC)
-
-Short to Ground (SCG)
-
-Short to Battery (SCB)
-
-Signal Deviation
-
-Timing Faults
-
-Communication Errors (e.g., CAN Error Frames)
+Open Circuit (OC), Short to Ground (SCG), Short to Battery (SCB) ,Signal Deviation Timing Faults,Communication Errors (e.g., CAN Error Frames)
 
 7. Diagnostics, UDS, Channels in CAN Box
 
@@ -207,13 +91,6 @@ UDS (ISO 14229): Unified Diagnostic Services
 0x2E – Write Data By Identifier
 
 0x19 – Read DTC Information
-
-CAN Channels:
-
-CAN1, CAN2... used for multiple ECUs
-
-Each channel supports sending/receiving frames via CANoe, CANalyzer, etc.
-
 8. CANoe, CANalyzer, CANape
 Tool	Purpose
 CANoe	Simulation + Test + Diagnostics (Restbus simulation, CAPL scripting)
@@ -250,44 +127,23 @@ Protocol	Event-driven	Time-triggered	IP-based stack
 
 Black Box Testing
 
-White Box Testing
-
-Boundary Value Analysis
-
-Equivalence Partitioning
-
-Stress Testing
-
-Regression Testing
-
-Restbus Simulation
-
-Fault Injection Testing
-
-Back-to-Back Testing
+White Box Testing ,Boundary Value Analysis,Equivalence Partitioning,Stress Testing,Regression Testing,Restbus Simulation,Fault Injection Testing,Back-to-Back Testing
 
 12. Defect Lifecycle
 New → Assigned → In Progress → Resolved → Verified → Closed
       ↓              ↓
     Rejected      Reopened
-
-
-Use tools like JIRA, Bugzilla, Polarion to track.
+Use tools like JIRA
 
 13. Retesting vs Confirmation Testing
 Type	Description
 Retesting	Re-executing test cases that failed earlier
 Confirmation Testing	Re-testing to confirm that fixes resolve the issue without side effects
 14. ASIL Levels, Functional Safety
-
 ASIL (Automotive Safety Integrity Level): Part of ISO 26262
-
 ASIL	Severity	Use Case Example
 A	Low	Interior lighting
 B	Moderate	Wiper control
 C	High	Airbag control
 D	Very High	ABS, ESC, ADAS
-
-Functional Safety:
-
-Ensures safety even in presence of faults
+Functional Safety: Ensures safety even in presence of faults
